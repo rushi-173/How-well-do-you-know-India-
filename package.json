@@ -1,0 +1,24 @@
+{
+  "name": "How-well-do-you-know-India",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushi-173/-How-well-do-you-know-India-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rushi-173/-How-well-do-you-know-India-/issues"
+  },
+  "homepage": "https://github.com/rushi-173/-How-well-do-you-know-India-#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "readline-sync": "^1.4.10"
+  }
+}
