@@ -2,6 +2,7 @@ var readlineSync = require("readline-sync");
 const chalk = require('chalk');
 const fs = require("fs");
 
+//Questions List
 var questionList = [
 {
   question: "What is the National Tree of India. \n a. Tamarind Tree \n b. Banyan Tree \n c. Neem Tree \n d. Peepal Tree \n ",
@@ -25,13 +26,16 @@ var questionList = [
 }
 ]
 
-userScore = 0;
+//score of user
+let userScore = 0;
+//imported scores data from scores.json
 var scoreboard = require('./scores');
 
+//function to check answer
 function check(question, answer){
   var userAns = readlineSync.question(question + "\n Enter your answer: ");
   if(userAns === answer){
-    console.log(chalk.bgGreen("Right Answer"));
+    console.log(chalk.black.bgGreen("Right Answer"));
     userScore+= 4;
   }
   else{
@@ -40,6 +44,7 @@ function check(question, answer){
   }
 }
 
+//welcome and start
 var userName = readlineSync.question("Enter your name : ");
 console.log(chalk.blue.bgRed.bold("Welcome! "+userName+"."));
 console.log("\n Lets see -  How well do you know India?");
@@ -49,15 +54,20 @@ console.log(chalk.red("2. You will get 4 points for every right answer."));
 console.log(chalk.red("3. For each wrong answer 1 point will be deducted from score. \n"));
 console.log(chalk.blue.bgGreen.underline.bold("Lets start the game..."));
 
+//ask all questions in list and check answers
 for(var i=0; i<questionList.length; i++){
   check(questionList[i].question, questionList[i].answer);
 }
+//printing if highscore
 if(userScore>= scoreboard[0].score){
   console.log(chalk.bgMagenta("Wow! You made Highscore"));
 }
-console.log(chalk.bgBlue("Your total score is : "+userScore));
-scoreboard.push({name: userName, score: userScore});
 
+//print user score
+console.log(chalk.bgBlue("Your total score is : "+userScore));
+//add current user data to scoreboard
+scoreboard.push({name: userName, score: userScore});
+//sort scoreboard
 function sort_by_key(array, key)
 {
  return array.sort(function(a, b)
@@ -67,13 +77,16 @@ function sort_by_key(array, key)
  });
 }
 sort_by_key(scoreboard, "score");
+//rewrite scores.json
 fs.writeFile("scores.json", JSON.stringify(scoreboard), err => { 
     if (err) throw err;  
 });
-
+//printing leaderboard
 console.log(chalk.red("-------------------------------------"));
 console.log("Leader Board");
 for(i=0; i<scoreboard.length; i++){
   console.log(chalk.blue(scoreboard[i].name+"  :  "+scoreboard[i].score));
 }
 console.log(chalk.red("-------------------------------------"));
+
+console.log(chalk.red.bgGreen.bold.underline("Thank You for taking quiz"));
