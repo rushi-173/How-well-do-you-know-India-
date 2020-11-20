@@ -1,4 +1,4 @@
-# -How-well-do-you-know-India-
+# How-well-do-you-know-India-
 
 I created this basic application as an assignment for Level1 of https://www.neog.camp . <br/>
 Lets see how well do you know India. <br/>
